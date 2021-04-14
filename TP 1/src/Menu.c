@@ -4,19 +4,20 @@
 #include "Calculadora.h"
 #include "Menu.h"
 #include "Informar.h"
-#include "Validaciones.h"
 
 void menu (void){
 
 	int flagSalir;
 	int flagDivisionporCero;
-	int flagPrimeroOperando;
-	/*int flagSegundoOperando;
+	int flagFactorialPorNegativo;
+	int flagFactorialPorFlotante;
+	int flagPrimeroOperandoValidacion;
+	int flagSegundoOperandoValidacion;
 	int flagCalculos;
-	int flagInformarResultados;*/
-	int x;
-	int y;
+	int flagInformarResultados;
 	int opcion;
+	float x;
+	float y;
 	int resSuma;
 	int resResta;
 	float resDivision;
@@ -25,39 +26,75 @@ void menu (void){
 	int resfactorialB;
 
 	flagSalir = 0;
-	flagPrimeroOperando = 0;
+	flagPrimeroOperandoValidacion = 0;
+	flagSegundoOperandoValidacion = 0;
 
 	while (!flagSalir){
 
-		printf("1- Ingresar el 1er operando (A)\n");
-		printf("2- Ingresar el 2do operando (B)\n");
+		if(!flagPrimeroOperandoValidacion){
+		printf("1- Ingresar el 1er operando (A) = x\n");
+		}
+		else{
+		printf("1- Ingresar el 1er operando (A) = %f\n",x);
+		}
+		if(!flagSegundoOperandoValidacion){
+			printf("2- Ingresar el 2do operando (B) = y\n");
+		}
+		else{
+			printf("2- Ingresar el 2do operando (B) = %f\n",y);
+		}
 		printf("3- Calcular todas las operaciones \n");
 		printf("4- Informar los resultados \n");
 		printf("5- Salir \n\n");
 		printf("Seleccione una opcion: ");
 		scanf("%i", &opcion);
-		printf("\n");
+
 
 		switch (opcion){
 
 		case 1:
 
-			printf("Ingrese 1er operando: ");
+			flagPrimeroOperandoValidacion = 0;
+
+			printf("\nIngrese 1er operando: ");
 			fflush(stdin);
-			scanf("%i", &x);
 
-			validacionPrimerOperando (&x, &flagPrimeroOperando);
+			while(!flagPrimeroOperandoValidacion){
 
-			printf("numero ingresado %i", x);
+				if(scanf("%2.f",&x)==1){
+					flagPrimeroOperandoValidacion = 1;
+					fflush(stdin);
+					break;
+				}
+
+				printf("\nError... Reingrese numero\n\n");
+				printf("Ingrese 1er operando: ");
+				fflush(stdin);
+			}
 
 			printf("\n");
 				break;
 
 		case 2:
 
-			printf("Ingrese el 2do operando: ");
+			flagSegundoOperandoValidacion = 0;
+
+			printf("\nIngrese el 2do operando: ");
 			fflush(stdin);
-			scanf("%i", &y);
+
+			while(!flagSegundoOperandoValidacion){
+
+				if(scanf("%2.f",&y)==1){
+					flagSegundoOperandoValidacion = 1;
+					fflush(stdin);
+					break;
+				}
+
+				printf("\nError... Reingrese numero\n\n");
+				printf("Ingrese 2do operando: ");
+				fflush(stdin);
+			}
+
 			printf("\n");
 				break;
 
@@ -67,8 +104,8 @@ void menu (void){
 			resta(x, y, &resResta);
 			division(x, y, &resDivision, &flagDivisionporCero);
 			multiplicacion(x, y, &resMultiplicacion);
-			factorial(x, &resfactorialA);
-			factorial(y, &resfactorialB);
+			factorial(x, &resfactorialA,flagFactorialPorNegativo,flagFactorialPorFlotante);
+			factorial(y, &resfactorialB,flagFactorialPorNegativo,flagFactorialPorFlotante);
 			printf("\nCalculos realizados\n");
 				break;
 
@@ -83,6 +120,9 @@ void menu (void){
 			break;
 
 		default:
+
+			printf("\n\nDato invalido...\n\n");
+			fflush(stdin);
 
 			break;
 		}

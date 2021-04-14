@@ -3,7 +3,6 @@
 
 #include "Calculadora.h"
 #include "Menu.h"
-#include "Validaciones.h"
 
 void infomarResultados (int suma,int resta, float division, int banderadeCero, int multiplicacion, int factorialdeA, int factorialdeB){
 
@@ -19,6 +18,8 @@ void infomarResultados (int suma,int resta, float division, int banderadeCero, i
 	}
 
 	printf("\n El resultado de A * B es : %i\n",multiplicacion);
+
+	printf("No se puede realizar factorial por numeros negativos");
 	printf("\n El factorial de A es: %i y el factorial de B es: %i", factorialdeA, factorialdeB);
 	printf("\n\n");
 	system("pause");

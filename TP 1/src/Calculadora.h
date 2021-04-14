@@ -5,6 +5,6 @@ int suma (int A, int B, int* resultado);
 int resta (int A, int B, int* resultado);
 int division (int A, int B, float* resultado, int* banderadeCero);
 int multiplicacion (int A, int B, int* resultado);
-int factorial (int X, int* resultado);
+int factorial (int X, int* resultado, int* banderaFactorialPorNegativo, int* banderaFactorialPorFloat);
 
 #endif /* CALCULADORA_H_ */
