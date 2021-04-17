@@ -3,7 +3,7 @@
 
 
 
-void infomarResultados (float ressuma,float resresta, float resdivision, float resmultiplicacion, long long int resfactorialdeA, long long int resfactorialdeB, int retDivision, int retFactorialA,int retFactorialB){
+void infomarResultados (float ressuma,float resresta, float resdivision, float resmultiplicacion,int resfactorialdeA, int resfactorialdeB, int retDivision, int retFactorialA,int retFactorialB){
 
 	system("cls");
 
@@ -22,15 +22,15 @@ void infomarResultados (float ressuma,float resresta, float resdivision, float r
 	printf("\nEl resultado de A * B es : %.2f\n",resmultiplicacion);
 
 	if(!retFactorialA && !retFactorialB){
-		printf("\nEl factorial de A es: %lli y el factorial de B es: %lli\n", resfactorialdeA, resfactorialdeB);
+		printf("\nEl factorial de A es: %i y el factorial de B es: %i\n", resfactorialdeA, resfactorialdeB);
 	}
 	else{
 		if(retFactorialA && !retFactorialB){
-			printf("\nEl factorial de A es: No se pudo realizar y el factorial de B es: %lli \n", resfactorialdeB);
+			printf("\nEl factorial de A es: No se pudo realizar y el factorial de B es: %i \n", resfactorialdeB);
 		}
 		else{
 			if(!retFactorialA && retFactorialB){
-				printf("\nEl factorial de A es: %lli y el factorial de B es: No se pudo realizar\n", resfactorialdeA);
+				printf("\nEl factorial de A es: %i y el factorial de B es: No se pudo realizar\n", resfactorialdeA);
 			}
 			else{
 				printf("\nEl factorial de A es: No se pudo realizar y el factorial de B es: No se pudo realizar\n");

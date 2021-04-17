@@ -43,6 +43,6 @@ int multiplicacion (float A, float B, float* resultado);
  * return Si se logro la operacion devuelve 0 y 1 en caso de que el operando ingresado sea 0 o si son de tipo float
  * */
 
-int factorial (float X,long long int* resultado);
+int factorial (float X,int* resultado);
 
 #endif /* CALCULADORA_H_ */

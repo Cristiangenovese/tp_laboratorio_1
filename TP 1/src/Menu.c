@@ -20,8 +20,8 @@ void menu (void){
 	float resResta;
 	float resDivision;
 	float resMultiplicacion;
-	long long int resfactorialA;
-	long long int resfactorialB;
+	int resfactorialA;
+	int resfactorialB;
 
 	flagSalir = 0;
 	flagPrimeroOperandoValidacion = 0;

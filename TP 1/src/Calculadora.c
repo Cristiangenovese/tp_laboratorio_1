@@ -33,9 +33,9 @@ int multiplicacion (float A, float B, float* resultado){
 	return 0;
 }
 
-int factorial (float X,long long int* resultado){
+int factorial (float X,int* resultado){
 
-	long long int acumulador = 1;
+	int acumulador = 1;
 	int banderaFactorial = 0;
 	int auxiliar;
 	float resto;

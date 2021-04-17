@@ -13,6 +13,6 @@
  * param9 Es el parametro pasado por valor que sera el retorno de el factorial del segundo operando
  * */
 
-void infomarResultados (float ressuma,float resresta, float resdivision, float resmultiplicacion,long long int resfactorialdeA,long long int resfactorialdeB, int retDivision, int retFactorialA,int retFactorialB);
+void infomarResultados (float ressuma,float resresta, float resdivision, float resmultiplicacion,int resfactorialdeA,int resfactorialdeB, int retDivision, int retFactorialA,int retFactorialB);
 
 #endif /* INFORMAR_H_ */
