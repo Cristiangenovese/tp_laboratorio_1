@@ -40,7 +40,7 @@ int multiplicacion (float A, float B, float* resultado);
 /*brief La funcion realiza el factorial de los operandos pasados por valor y devuelve un resultado pasado por referencia
  * param1 Es el primer parametro pasado por valor que sera un operando para realizar el calculo
  * param2 Es el tercer parametro pasado por referencia que sera el resutaldo de la operacion
- * return Si se logro la operacion devuelve 0 y 1 en caso de que el operando ingresado sea de tipo float
+ * return Si se logro la operacion devuelve 0 y 1 en caso de que el operando ingresado sea de tipo float o negativo
  * */
 
 int factorial (float X,int* resultado);

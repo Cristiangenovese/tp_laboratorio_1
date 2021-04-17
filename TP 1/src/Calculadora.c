@@ -45,9 +45,14 @@ int factorial (float X,int* resultado){
 	resto = X - auxiliar;
 
 	if(resto == 0){
+		if(auxiliar > -1){
 			for (int i = auxiliar; i > 0; i--){
 				acumulador *= i;
 			}
+		}
+		else{
+			banderaFactorial = 1;
+		}
 	}
 	else{
 		banderaFactorial = 1;
