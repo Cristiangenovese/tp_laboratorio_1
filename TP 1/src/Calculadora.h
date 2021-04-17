@@ -1,10 +1,48 @@
 #ifndef CALCULADORA_H_
 #define CALCULADORA_H_
 
-int suma (int A, int B, int* resultado);
-int resta (int A, int B, int* resultado);
-int division (int A, int B, float* resultado, int* banderadeCero);
-int multiplicacion (int A, int B, int* resultado);
-int factorial (int X, int* resultado, int* banderaFactorialPorNegativo, int* banderaFactorialPorFloat);
+/*brief La funcion realiza la suma de los operandos pasados por valor y devuelve un resultado pasado por referencia
+ * param1 Es el primer parametro pasado por valor que sera un operando para realizar el calculo
+ * param2 Es el segundo parametro pasado por valor que sera el otro operando para realizar el calculo
+ * param3 Es el tercer parametro pasado por referencia que sera el resutaldo de la operacion
+ * return Si se logro la operacion devuelve 0
+ * */
+
+int suma (float A, float B, float* resultado);
+
+/*brief La funcion realiza la resta de los operandos pasados por valor y devuelve un resultado pasado por referencia
+ * param1 Es el primer parametro pasado por valor que sera un operando para realizar el calculo
+ * param2 Es el segundo parametro pasado por valor que sera el otro operando para realizar el calculo
+ * param3 Es el tercer parametro pasado por referencia que sera el resutaldo de la operacion
+ * return Si se logro la operacion devuelve 0
+ * */
+
+int resta (float A, float B, float* resultado);
+
+/*brief La funcion realiza la division de los operandos pasados por valor y devuelve un resultado pasado por referencia
+ * param1 Es el primer parametro pasado por valor que sera un operando para realizar el calculo
+ * param2 Es el segundo parametro pasado por valor que sera el otro operando para realizar el calculo
+ * param3 Es el tercer parametro pasado por referencia que sera el resutaldo de la operacion
+ * return Si se logro la operacion devuelve 0, y devuelve 1 si se ingresa un 0 en el segundo parametro
+ * */
+
+int division (float A, float B, float* resultado);
+
+/*brief La funcion realiza la multiplicacion de los operandos pasados por valor y devuelve un resultado pasado por referencia
+ * param1 Es el primer parametro pasado por valor que sera un operando para realizar el calculo
+ * param2 Es el segundo parametro pasado por valor que sera el otro operando para realizar el calculo
+ * param3 Es el tercer parametro pasado por referencia que sera el resutaldo de la operacion
+ * return Si se logro la operacion devuelve 0
+ * */
+
+int multiplicacion (float A, float B, float* resultado);
+
+/*brief La funcion realiza el factorial de los operandos pasados por valor y devuelve un resultado pasado por referencia
+ * param1 Es el primer parametro pasado por valor que sera un operando para realizar el calculo
+ * param2 Es el tercer parametro pasado por referencia que sera el resutaldo de la operacion
+ * return Si se logro la operacion devuelve 0 y 1 en caso de que el operando ingresado sea 0 o si son de tipo float
+ * */
+
+int factorial (float X,long long int* resultado);
 
 #endif /* CALCULADORA_H_ */

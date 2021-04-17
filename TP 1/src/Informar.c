@@ -1,26 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Calculadora.h"
-#include "Menu.h"
 
-void infomarResultados (int suma,int resta, float division, int banderadeCero, int multiplicacion, int factorialdeA, int factorialdeB){
+
+void infomarResultados (float ressuma,float resresta, float resdivision, float resmultiplicacion, long long int resfactorialdeA, long long int resfactorialdeB, int retDivision, int retFactorialA,int retFactorialB){
 
 	system("cls");
-	printf("\n El resultado de A + B es : %i\n",suma);
-	printf("\n El resultado de A - B es : %i\n",resta);
 
-	if (banderadeCero == 0){
-		printf("\n El resultado de A / B es : %.2f\n",division);
+	printf("\nEl resultado de A + B es : %.2f\n",ressuma);
+
+	printf("\nEl resultado de A - B es : %.2f\n\n",resresta);
+
+
+	if(!retDivision){
+		printf("\nEl resultado de A / B es : %.2f\n",resdivision);
 	}
 	else{
-		printf("\n No es posible dividir por cero\n");
+		printf("\nNo es posible dividir por cero\n");
 	}
 
-	printf("\n El resultado de A * B es : %i\n",multiplicacion);
+	printf("\nEl resultado de A * B es : %.2f\n",resmultiplicacion);
 
-	printf("No se puede realizar factorial por numeros negativos");
-	printf("\n El factorial de A es: %i y el factorial de B es: %i", factorialdeA, factorialdeB);
+	if(!retFactorialA && !retFactorialB){
+		printf("\nEl factorial de A es: %lli y el factorial de B es: %lli\n", resfactorialdeA, resfactorialdeB);
+	}
+	else{
+		if(retFactorialA && !retFactorialB){
+			printf("\nEl factorial de A es: No se pudo realizar y el factorial de B es: %lli \n", resfactorialdeB);
+		}
+		else{
+			if(!retFactorialA && retFactorialB){
+				printf("\nEl factorial de A es: %lli y el factorial de B es: No se pudo realizar\n", resfactorialdeA);
+			}
+			else{
+				printf("\nEl factorial de A es: No se pudo realizar y el factorial de B es: No se pudo realizar\n");
+			}
+		}
+	}
+
 	printf("\n\n");
 	system("pause");
 }

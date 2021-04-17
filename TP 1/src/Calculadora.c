@@ -1,54 +1,65 @@
-int suma (int A, int B, int* resultado){
+int suma (float A, float B, float* resultado){
+
 
 	*resultado = A + B;
 
 	return 0;
 	}
 
-int resta (int A, int B, int* resultado){
+int resta (float A, float B, float* resultado){
 
 	*resultado = A - B;
 
 	return 0;
 }
 
-int division (int A, int B, float* resultado, int* banderadeCero){
+int division (float A, float B, float* resultado){
 
-	*banderadeCero = 0;
+	int banderaDeCero = 0;
 
 	if (B != 0){
 		*resultado = (float)A / B;
 	}
 	else{
-		*banderadeCero = 1;
+		banderaDeCero = 1;
 	}
-	return 0;
+	return banderaDeCero;
 }
 
-int multiplicacion (int A, int B, int* resultado){
+int multiplicacion (float A, float B, float* resultado){
 
 	*resultado = A * B;
 
 	return 0;
 }
 
-int factorial (int X, int* resultado, int* banderaFactorialPorNegativo, int* banderaFactorialPorFloat){
+int factorial (float X,long long int* resultado){
 
-	int acumulador = 1;
+	long long int acumulador = 1;
+	int banderaFactorial = 0;
+	int auxiliar;
+	float resto;
 
-	*banderaFactorialPorNegativo = 0;
+	auxiliar = X;
 
-	if(X>0){
-		for (int i = X; i > 0; i--){
-			acumulador *= i;
+	resto = auxiliar / X;
+
+	if(resto == 1){
+		if(auxiliar>0){
+			for (int i = auxiliar; i > 0; i--){
+				acumulador *= i;
+			}
+		}
+		else{
+			banderaFactorial = 1;
 		}
 	}
 	else{
-		*banderaFactorialPorNegativo = 1;
+		banderaFactorial = 1;
 	}
 
 	*resultado = acumulador;
 
-	return 0;
+	return banderaFactorial;
 }
 

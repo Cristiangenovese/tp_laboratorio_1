@@ -2,32 +2,31 @@
 #include <stdlib.h>
 
 #include "Calculadora.h"
-#include "Menu.h"
 #include "Informar.h"
 
 void menu (void){
 
 	int flagSalir;
-	int flagDivisionporCero;
-	int flagFactorialPorNegativo;
-	int flagFactorialPorFlotante;
 	int flagPrimeroOperandoValidacion;
 	int flagSegundoOperandoValidacion;
 	int flagCalculos;
-	int flagInformarResultados;
+	int retornoDivision;
+	int retornoFactorialA;
+	int retornoFactorialB;
 	int opcion;
 	float x;
 	float y;
-	int resSuma;
-	int resResta;
+	float resSuma;
+	float resResta;
 	float resDivision;
-	int resMultiplicacion;
-	int resfactorialA;
-	int resfactorialB;
+	float resMultiplicacion;
+	long long int resfactorialA;
+	long long int resfactorialB;
 
 	flagSalir = 0;
 	flagPrimeroOperandoValidacion = 0;
 	flagSegundoOperandoValidacion = 0;
+	flagCalculos = 0;
 
 	while (!flagSalir){
 
@@ -35,20 +34,22 @@ void menu (void){
 		printf("1- Ingresar el 1er operando (A) = x\n");
 		}
 		else{
-		printf("1- Ingresar el 1er operando (A) = %f\n",x);
+		printf("1- Ingresar el 1er operando (A) = %.2f\n",x);
 		}
+
 		if(!flagSegundoOperandoValidacion){
 			printf("2- Ingresar el 2do operando (B) = y\n");
 		}
 		else{
-			printf("2- Ingresar el 2do operando (B) = %f\n",y);
+			printf("2- Ingresar el 2do operando (B) = %.2f\n",y);
 		}
+
 		printf("3- Calcular todas las operaciones \n");
 		printf("4- Informar los resultados \n");
 		printf("5- Salir \n\n");
 		printf("Seleccione una opcion: ");
 		scanf("%i", &opcion);
-
+		fflush(stdin);
 
 		switch (opcion){
 
@@ -61,14 +62,14 @@ void menu (void){
 
 			while(!flagPrimeroOperandoValidacion){
 
-				if(scanf("%2.f",&x)==1){
+				if(scanf("%f",&x)==1){
 					flagPrimeroOperandoValidacion = 1;
 					fflush(stdin);
 					break;
 				}
 
 				printf("\nError... Reingrese numero\n\n");
-				printf("Ingrese 1er operando: ");
+				printf("\nIngrese 1er operando: ");
 				fflush(stdin);
 			}
 
@@ -77,22 +78,28 @@ void menu (void){
 
 		case 2:
 
-			flagSegundoOperandoValidacion = 0;
+			if(flagPrimeroOperandoValidacion){
 
-			printf("\nIngrese el 2do operando: ");
-			fflush(stdin);
+				flagSegundoOperandoValidacion = 0;
 
-			while(!flagSegundoOperandoValidacion){
-
-				if(scanf("%2.f",&y)==1){
-					flagSegundoOperandoValidacion = 1;
-					fflush(stdin);
-					break;
-				}
-
-				printf("\nError... Reingrese numero\n\n");
-				printf("Ingrese 2do operando: ");
+				printf("\nIngrese el 2do operando: ");
 				fflush(stdin);
+
+				while(!flagSegundoOperandoValidacion){
+
+					if(scanf("%f",&y)==1){
+						flagSegundoOperandoValidacion = 1;
+						fflush(stdin);
+						break;
+					}
+
+					printf("\nError... Reingrese numero\n\n");
+					printf("\nIngrese 2do operando: ");
+					fflush(stdin);
+				}
+			}
+			else{
+				printf("\nDebe ingresar el primer numero\n");
 			}
 
 			printf("\n");
@@ -100,19 +107,49 @@ void menu (void){
 
 		case 3:
 
-			suma(x, y, &resSuma);
-			resta(x, y, &resResta);
-			division(x, y, &resDivision, &flagDivisionporCero);
-			multiplicacion(x, y, &resMultiplicacion);
-			factorial(x, &resfactorialA,flagFactorialPorNegativo,flagFactorialPorFlotante);
-			factorial(y, &resfactorialB,flagFactorialPorNegativo,flagFactorialPorFlotante);
-			printf("\nCalculos realizados\n");
-				break;
+			if(flagPrimeroOperandoValidacion && flagSegundoOperandoValidacion){
+				suma(x, y, &resSuma);
+				resta(x, y, &resResta);
+				retornoDivision = division(x, y, &resDivision);
+				multiplicacion(x, y, &resMultiplicacion);
+				retornoFactorialA = factorial(x, &resfactorialA);
+				retornoFactorialB = factorial(y, &resfactorialB);
+
+				printf("\nCalculos realizados\n\n");
+
+				flagCalculos = 1;
+			}
+			else{
+				if(!flagPrimeroOperandoValidacion && !flagPrimeroOperandoValidacion){
+					printf("\nDebe ingresar primero los numeros a calcular\n\n");
+				}
+				else{
+					if(!flagPrimeroOperandoValidacion){
+						printf("\nDebe ingresar el primer operando\n\n");
+					}
+					else{
+						printf("\nDebe ingresar el segundo operando\n\n");
+					}
+				}
+			}
+			break;
 
 		case 4:
 
-			infomarResultados (resSuma, resResta, resDivision, flagDivisionporCero, resMultiplicacion, resfactorialA, resfactorialB);
-				break;
+			if(flagCalculos){
+			infomarResultados (resSuma, resResta, resDivision, resMultiplicacion, resfactorialA, resfactorialB, retornoDivision, retornoFactorialA, retornoFactorialB);
+
+			flagPrimeroOperandoValidacion = 0;
+			flagSegundoOperandoValidacion = 0;
+			flagCalculos = 0;
+
+			}
+			else{
+				printf("\nDebe realizar los calculos primero\n");
+			}
+
+
+			break;
 
 		case 5:
 
@@ -126,6 +163,6 @@ void menu (void){
 
 			break;
 		}
+		opcion = 0;
 	}
 }
-
